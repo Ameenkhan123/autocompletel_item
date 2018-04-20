@@ -1,0 +1,2 @@
+class Testd < ApplicationRecord
+end

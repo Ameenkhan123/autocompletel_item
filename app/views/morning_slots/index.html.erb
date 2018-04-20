@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Morning Slots</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @morning_slots.each do |morning_slot| %>
+      <tr>
+        <td><%= morning_slot.name %></td>
+        <td><%= link_to 'Show', morning_slot %></td>
+        <td><%= link_to 'Edit', edit_morning_slot_path(morning_slot) %></td>
+        <td><%= link_to 'Destroy', morning_slot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Morning Slot', new_morning_slot_path %>

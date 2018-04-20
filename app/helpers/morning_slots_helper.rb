@@ -1,0 +1,2 @@
+module MorningSlotsHelper
+end

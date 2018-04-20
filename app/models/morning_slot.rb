@@ -1,0 +1,2 @@
+class MorningSlot < ApplicationRecord
+end

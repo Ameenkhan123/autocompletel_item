@@ -1,0 +1,13 @@
+prefix=/home/ameen/03 test rails project/test_app/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.2/ports/i686-pc-linux-gnu/libxml2/2.9.7
+exec_prefix=${prefix}
+libdir=/home/ameen/03 test rails project/test_app/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.2/ports/i686-pc-linux-gnu/libxml2/2.9.7/lib
+includedir=${prefix}/include
+modules=1
+
+Name: libXML
+Version: 2.9.7
+Description: libXML library version2.
+Requires:
+Libs: -L${libdir} -lxml2
+Libs.private:   -lz   -lm  
+Cflags: -I${includedir}/libxml2 

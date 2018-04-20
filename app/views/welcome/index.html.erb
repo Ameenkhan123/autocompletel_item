@@ -1,0 +1,12 @@
+<%= form_tag(items_path, :method => "get", id: "search-form") do %>
+<!-- text field tag=action,args,identifier,placeholdertext... -->
+<%= text_field_tag :search, params[:search], :as => :autocomplete, class: "search-query", placeholder: "namesearch", type: "search", autocomplete: "on", data: { autocomplete: autocomplete_item_list_welcome_index_path} %>
+ 
+<%= submit_tag "Search" %>
+<%end%>
+<script type="text/javascript" charset="utf-8">
+  $('#search').bind('railsAutocomplete.select', function(event, data)
+  {
+    $('#search-form').submit()
+  });
+</script>

@@ -1,0 +1,63 @@
+<!-- Number of views: --> <%#= @item.impressionist_count(:filter=>:ip_address)%>
+<div class="col-md-10">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h1> details</h1>
+		</div>
+	</div>
+	<div class="well">
+		<strong> item_list:</strong>
+		<%=  @item.item_list %>
+		<br>
+		<br>
+		<strong> list:</strong>
+		<%= @item.list%>
+		<br>
+		<br>
+		<strong> item_img:</strong>
+		<%= @item.item_img %>
+		<br>
+		<br>
+		<strong> item_title:</strong>
+		<%= @item.item_title %><br>
+		<strong> price:</strong>
+		<%= @item.price %><br>
+		<strong> tips:</strong>
+		<%= @item.tips %>
+		<br>
+		<br>
+		<!-- appoinment fetch data -->
+		<h1>welcome name:</h1>
+		<% @item.welcomes.each do |welcome| %>
+		<%= welcome.name %>
+		<% end %><br>
+		<!-- close appoinment fetch data -->
+		<%= link_to 'Back', items_path, :class => 'btn btn-info '  %>
+	</div>
+
+	<!-- nested form -->
+	<%=@item.images.each do |image|%>
+	<%= image_tag image.images_url(:thumb) %>
+	<% end %>
+	<!-- close nested form -->
+
+	<!-- appoinment custum form-->
+	<h1>Welcome</h1>
+	<%= form_for :welcome, url: :items_create_welcome, method: :post do |f| %>
+
+	<div class="form-group">
+		<p>
+			<!-- appoinment model -->
+			<%= f.label :name, :class => 'control-label col-lg-2' %><br>
+			<%= f.text_field :name, :class => 'form-control' %>
+			<!-- Doctor id model and controller-->
+			<%#= f.hidden_field :item_id, :value => @item.id %>
+			<!-- patient id  model and controller-->
+			<%#= f.hidden_field :user_id, :value => current_user.id %>
+			<%#= f.hidden_field :email, :value => current_user.email %>
+		</p>
+	</div>
+	<div class="col-md-5" style="margin-left: 25%">
+		<%= f.submit 'submit', :class => 'btn btn-success btn btn-block'  %>
+	</div>
+	<% end %>

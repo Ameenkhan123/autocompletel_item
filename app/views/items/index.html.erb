@@ -1,0 +1,65 @@
+<%= form_tag(items_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :item, params[:item], autofocus: true, placeholder: "namesearch", type: "search", autocomplete: "on", data: { autocomplete: autocomplete_item_list_items_path} %>
+<%= submit_tag "Search" %>
+<%end%>
+<h1>Listing</h1>
+<table class="table table-hover">
+  <thead>
+    <ul>
+      <tr>
+        <th>item_list:</th>
+        <th>list:</th>
+        <th>item_img:</th>
+        <th>item_title:</th>
+        <th>price:</th>
+        <th>tips:</th>         
+      </tr>
+    </thead>
+    <%# byebug %>
+    <% @items.each do |item| %>
+    <tr>
+      <td><%= item.item_list %></td>
+      <td><%= item.list %></td>
+      <td><%= item.item_img %></td>
+      <td><%= item.item_title %></td>
+      <td><%= item.price %></td>
+      <td><%= item.tips %></td>   
+      <td><%= link_to 'Show', item_path(item), :class => 'btn btn-success ' %></td>
+    </tr>
+  </ul>
+  <% end %>
+</thead>
+</table>
+<td><%= link_to 'New item', new_item_path, :class => 'btn btn-primary '%></td>
+
+<script type="text/javascript">
+  jQuery(function() {
+    return $('#search').autocomplete({
+      source: $('#search-form').data('autocomplete')
+    });
+  });
+</script>
+<style type="text/css">
+  ul.ui-autocomplete {
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: solid 1px #999;
+    cursor: default;
+    li {
+      background-color: #FFF;
+      border-top: solid 1px #DDD;
+      margin: 0;
+      padding: 0;
+      a {
+        color: #000;
+        display: block;
+        padding: 3px;
+      }
+      a.ui-state-hover, a.ui-state-active {
+        background-color: #FFFCB2;
+      }
+    }
+  }
+</style>
